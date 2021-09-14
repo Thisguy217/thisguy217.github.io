@@ -13,3 +13,7 @@ body {
 h6{
 	display: inline;
 }
+img {
+	max-width:500px;
+	height:auto;
+}
