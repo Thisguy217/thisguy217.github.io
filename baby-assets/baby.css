@@ -13,26 +13,3 @@ body {
 h6{
 	display: inline;
 }
-.column {
-	float: left;
-	margin: 0.5%;
-	padding:0.5%;
-}
-.row::after {
-	content: "";
-	clear: both;
-	display: table;
-}
-.container {
-	position: relative;
-	text-align: center;
-	color: black;
-	background-color: white;
-}
-.bottom-left {
-	position: absolute;
-	bottom: 10%;
-	left: 7%;
-	color: black;
-	background-color: white;
-}
