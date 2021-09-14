@@ -24,3 +24,7 @@ a:link {
 a:visited {
 	color:#5030ff;
 }
+img {
+	max-width:100%;
+	height:auto;
+}
