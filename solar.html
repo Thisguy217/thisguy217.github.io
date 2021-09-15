@@ -22,17 +22,10 @@
         <img id="pluto" src="solar-assets/pluto.jpg">
       </a-assets>
       <a-sky color="#000010"></a-sky>
-      <a-entity camera="active: true" look-controls wasd-controls="acceleration: 500" position="0 1.6 10">
-          </a-entity>
-      
+      <a-entity camera look-controls wasd-controls="acceleration: 500" position="0 1.6 10"></a-entity>
       <a-entity star-system></a-entity>
-      <a-entity daydrem-controls></a-entity>
-      <a-entity gearvr-controls></a-entity>
-      <a-entity oculus-go-controls></a-entity>
-      <a-entity vive-controls="hand:left"></a-entity>
-      <a-entity vive-controls="hand:right"></a-entity>
-      <a-entity oculus-touch-controls="hand:left" thumbstick-logging></a-entity>
-      <a-entity oculus-touch-controls="hand:right" thumbstick-logging></a-entity>
+      <a-entity hand-controls="hand: left" magicleap-controls="" vive-controls="" oculus-touch-controls="" windows-motion-controls=""></a-entity>
+      <a-entity hand-controls="hand: right" magicleap-controls="" vive-controls="" oculus-touch-controls="" windows-motion-controls=""></a-entity>
       <a-sphere
           id="sol"
           position="0 0 0"
