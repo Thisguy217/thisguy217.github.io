@@ -1,0 +1,13 @@
+h1, h2, h3, a {
+	font-size=20vw
+}
+body {
+        background-color:#121212;
+        color:#ffffff;
+}
+a:link {
+        color:#bb86fc
+}
+a:visited {
+        color:#5030ff
+}
