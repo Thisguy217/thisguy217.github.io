@@ -116,7 +116,7 @@
             'bug': "https://github.com/Thisguy217/is-there-a-bug",
             'capstone': "https://github.com/Thisguy217/2025caps",
             'github': "https://github.com/Thisguy217/thisguy217.github.io",
-            'linkedin': "www.linkedin.com/in/teancum-hoopes-8a4a64b2",
+            'linkedin': "https://www.linkedin.com/in/teancum-hoopes-8a4a64b2"
         }
 
         const commands = {
@@ -128,7 +128,8 @@
             'projects': "1. Chaos Game Simulator [chaos_game]\n2. Is There a Bug? [bug]\n3. 2025 Capstone Project [capstone]\n4. This website! [github]",
             'contact': "Email: mrteancumhoopes@gmail.com\nLinkedIn: Teancum Hoopes (Load me by typing 'load linkedin'!)",
             'history': "Displaying session command history...",
-            'load': "Rerouting..."
+            'load': "Rerouting...",
+            'reboot': "Rebooting..."
         };
 
         let commandHistory = [];
@@ -159,6 +160,9 @@
                 } else if (cmd === 'load') {
                     addLine(`<div class="command-output">${commands[cmd]}</div>`);
                     handleRedirect(arg);
+                } else if (cmd === 'reboot') {
+                    addLine(`<div class="command-output">${commands[cmd]}</div>`);
+                    window.location.reload();
                 } else if (commands[cmd]) {
                     addLine(`<div class="command-output">${commands[cmd]}</div>`);
                 } else if (fullInput !== "") {
