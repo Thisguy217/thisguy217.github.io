@@ -7,10 +7,10 @@
     <style>
         /* CSS Variables - This makes theme swapping easy */
         :root {
-            --bg-color: #0a0a0a;
-            --text-color: #00FF41;
+            --bg-color: #121212;
+            --text-color: #419dab;
             --prompt-color: #ffffff;
-            --accent-color: #008f11;
+            --accent-color: #87bdc6;
             --font-mono: 'Courier New', Courier, monospace;
         }
 
@@ -24,10 +24,18 @@
 
         body.theme-ubuntu {
             --bg-color: #5E2750;
+            --text-color: #ffffff;
+            --prompt-color: #00FF41;
+            --accent-color: #77216F;
+        }
+
+        body.theme-matrix {
+            --bg-color: #0a0a0a;
             --text-color: #00FF41;
             --prompt-color: #ffffff;
-            --accent-color: #E95420;
+            --accent-color: #008f11;
         }
+        
 
         * { box-sizing: border-box; transition: background-color 0.3s, color 0.3s; }
 
@@ -103,15 +111,20 @@
         const input = document.getElementById('user-input');
         const history = document.getElementById('terminal-history');
 
+        const urlMap = {
+            'chaos_game': "https://github.com/Thisguy217/Chaos-Game-Simulator"
+        }
+
         const commands = {
             'help': "Available: [about] [projects] [contact] [clear] [theme default/amber] [history]",
             'about': "I am a Bioinformatician who genuinely just genuinely enjoys learning. " + 
                 "I earned my Bachelor of Science from BYU in April 2025 with a double major in Bioinformatics and Biochemistry, and a double minor in Computer Science and Mathematics. " + 
                 "Now I study at ASU, where I am working towards a Master of Science in Computational Life Sciences. Currently, I am working on various projects while between jobs. " +
                 "However, the jobs I have worked include areas of Protein Engineering, Simulation Research, IT support/administration, and more. I am always excited about new projects and want to learn more!",
-            'projects': "1. Project-X\n2. Portfolio-Shell",
+            'projects': "1. Chaos Game Simulator [chaos_game]\n2. Is There a Bug?\n3. 2025 Capstone Project 4. This website!",
             'contact': "Email: mrteancumhoopes@gmail.com",
-            'history': "Displaying session command history..."
+            'history': "Displaying session command history...",
+            'load': "Rerouting..."
         };
 
         let commandHistory = [];
@@ -139,6 +152,9 @@
                     handleTheme(arg);
                 } else if (cmd === 'history') {
                     addLine(`<div class="command-output">${commandHistory.join('\n')}</div>`);
+                } else if (cmd === 'load') {
+                    addLine(`<div class="command-output">${commands[cmd]}</div>`);
+                    handleRedirect(arg);
                 } else if (commands[cmd]) {
                     addLine(`<div class="command-output">${commands[cmd]}</div>`);
                 } else if (fullInput !== "") {
@@ -184,8 +200,19 @@
             } else if (theme === 'ubuntu') {
                 document.body.className = 'theme-ubuntu';
                 addLine("Switched to Ubuntu theme.");
+            } else if (theme === 'matrix') {
+                document.body.className = 'theme-matrix';
+                addLine("Switched to Matrix theme.");
             } else {
-                addLine("Usage: theme [default | amber | ubuntu]");
+                addLine("Usage: theme [default | amber | ubuntu | matrix]");
+            }
+        }
+
+        function handleRedirect(urlLocation) {
+            if (urlLocation === 'chaos_game') {
+                window.location.href = urlMap[target];
+            } else {
+                addLine("Usage: load [project_name]");
             }
         }
 
