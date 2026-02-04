@@ -112,7 +112,11 @@
         const history = document.getElementById('terminal-history');
 
         const urlMap = {
-            'chaos_game': "https://github.com/Thisguy217/Chaos-Game-Simulator"
+            'chaos_game': "https://github.com/Thisguy217/Chaos-Game-Simulator",
+            'bug': "https://github.com/Thisguy217/is-there-a-bug",
+            'capstone": "https://github.com/Thisguy217/2025caps",
+            'github': "https://github.com/Thisguy217/thisguy217.github.io",
+            'linkedin': "www.linkedin.com/in/teancum-hoopes-8a4a64b2",
         }
 
         const commands = {
@@ -121,8 +125,8 @@
                 "I earned my Bachelor of Science from BYU in April 2025 with a double major in Bioinformatics and Biochemistry, and a double minor in Computer Science and Mathematics. " + 
                 "Now I study at ASU, where I am working towards a Master of Science in Computational Life Sciences. Currently, I am working on various projects while between jobs. " +
                 "However, the jobs I have worked include areas of Protein Engineering, Simulation Research, IT support/administration, and more. I am always excited about new projects and want to learn more!",
-            'projects': "1. Chaos Game Simulator [chaos_game]\n2. Is There a Bug?\n3. 2025 Capstone Project 4. This website!",
-            'contact': "Email: mrteancumhoopes@gmail.com",
+            'projects': "1. Chaos Game Simulator [chaos_game]\n2. Is There a Bug? [bug]\n3. 2025 Capstone Project [capstone]\n4. This website! [github]",
+            'contact': "Email: mrteancumhoopes@gmail.com\nLinkedIn: Teancum Hoopes (Load me by typing 'load linkedin'!)",
             'history': "Displaying session command history...",
             'load': "Rerouting..."
         };
@@ -209,8 +213,10 @@
         }
 
         function handleRedirect(urlLocation) {
-            if (urlLocation === 'chaos_game') {
+            if (urlMap[urlLocation]) {
                 window.location.href = urlMap[urlLocation];
+            } else if (!urlMap[urlLocation]) {
+                addLine("Failed to reroute...")
             } else {
                 addLine("Usage: load [project_name]");
             }
