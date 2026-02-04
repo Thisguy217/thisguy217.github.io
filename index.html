@@ -22,6 +22,13 @@
             --accent-color: #8c6100;
         }
 
+        body.theme-ubuntu {
+            --bg-color: #5E2750;
+            --text-color: #00FF41;
+            --prompt-color: #ffffff;
+            --accent-color: #E95420;
+        }
+
         * { box-sizing: border-box; transition: background-color 0.3s, color 0.3s; }
 
         body {
@@ -174,8 +181,11 @@
             } else if (theme === 'default') {
                 document.body.className = '';
                 addLine("Switched to Default Matrix theme.");
+            } else if (theme === 'ubuntu') {
+                document.body.className = 'theme-ubuntu';
+                addLine("Switched to Ubuntu theme.");
             } else {
-                addLine("Usage: theme [default | amber]");
+                addLine("Usage: theme [default | amber | ubuntu]");
             }
         }
 
