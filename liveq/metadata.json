@@ -1,0 +1,5 @@
+{
+  "name": "LiveQ: Interactive Presentation System",
+  "description": "A real-time presentation tool where presenters can ask questions and the audience can submit answers instantly.",
+  "requestFramePermissions": []
+}
