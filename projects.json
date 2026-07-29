@@ -1,0 +1,20 @@
+[
+  {
+    "name": "LiveQ",
+    "key": "liveq",
+    "description": "Presentation tool for asking and answering questions live!",
+    "path": "/liveq/"
+  },
+  {
+    "name": "Monster Architect",
+    "key": "monster_architect",
+    "description": "Need a monster not in the Monster Manual? Create one here!",
+    "path": "/monster_architect/"
+  },
+  {
+    "name": "The Deck of Many Things Simulator",
+    "key": "deck",
+    "description": "A fun, interactive version of the deck of many things!",
+    "path": "/deck/"
+  }
+]

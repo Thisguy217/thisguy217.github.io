@@ -1,0 +1,107 @@
+/* CSS Variables - This makes theme swapping easy */
+:root {
+    --bg-color: #121212;
+    --text-color: #419dab;
+    --prompt-color: #ffffff;
+    --accent-color: #87bdc6;
+    --font-mono: 'Courier New', Courier, monospace;
+}
+
+/* The Amber Theme Alternative */
+body.theme-amber {
+    --bg-color: #1a1000;
+    --text-color: #ffb000;
+    --prompt-color: #ffcc00;
+    --accent-color: #8c6100;
+}
+
+body.theme-ubuntu {
+    --bg-color: #5E2750;
+    --text-color: #ffffff;
+    --prompt-color: #00FF41;
+    --accent-color: #77216F;
+}
+
+body.theme-matrix {
+    --bg-color: #0a0a0a;
+    --text-color: #00FF41;
+    --prompt-color: #ffffff;
+    --accent-color: #008f11;
+}
+
+
+* {
+    box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-mono);
+    margin: 0;
+    padding: 15px;
+    font-size: 14px;
+    overflow-x: hidden;
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .ascii-art {
+        display: none;
+    }
+}
+
+#terminal-history {
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+}
+
+.input-line {
+    display: flex;
+    align-items: center;
+}
+
+.prompt {
+    color: var(--prompt-color);
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+#user-input {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-family: var(--font-mono);
+    font-size: inherit;
+    outline: none;
+    width: 100%;
+}
+
+.command-output {
+    margin: 10px 0 20px 0;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.highlight {
+    color: var(--prompt-color);
+    font-weight: bold;
+}
+
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    z-index: 10;
+    background-size: 100% 3px, 3px 100%;
+    pointer-events: none;
+}

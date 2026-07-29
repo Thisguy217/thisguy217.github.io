@@ -1,94 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BifrostOS v0.1</title>
-    <style>
-        /* CSS Variables - This makes theme swapping easy */
-        :root {
-            --bg-color: #121212;
-            --text-color: #419dab;
-            --prompt-color: #ffffff;
-            --accent-color: #87bdc6;
-            --font-mono: 'Courier New', Courier, monospace;
-        }
-
-        /* The Amber Theme Alternative */
-        body.theme-amber {
-            --bg-color: #1a1000;
-            --text-color: #ffb000;
-            --prompt-color: #ffcc00;
-            --accent-color: #8c6100;
-        }
-
-        body.theme-ubuntu {
-            --bg-color: #5E2750;
-            --text-color: #ffffff;
-            --prompt-color: #00FF41;
-            --accent-color: #77216F;
-        }
-
-        body.theme-matrix {
-            --bg-color: #0a0a0a;
-            --text-color: #00FF41;
-            --prompt-color: #ffffff;
-            --accent-color: #008f11;
-        }
-        
-
-        * { box-sizing: border-box; transition: background-color 0.3s, color 0.3s; }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--font-mono);
-            margin: 0;
-            padding: 15px;
-            font-size: 14px;
-            overflow-x: hidden;
-        }
-
-        @media (max-width: 600px) {
-            body { font-size: 12px; padding: 10px; }
-            .ascii-art { display: none; }
-        }
-
-        #terminal-history { margin-bottom: 10px; white-space: pre-wrap; }
-        .input-line { display: flex; align-items: center; }
-        .prompt { color: var(--prompt-color); margin-right: 10px; white-space: nowrap; }
-
-        #user-input {
-            background: transparent;
-            border: none;
-            color: var(--text-color);
-            font-family: var(--font-mono);
-            font-size: inherit;
-            outline: none;
-            width: 100%;
-        }
-
-        .command-output { margin: 10px 0 20px 0; color: var(--text-color); opacity: 0.8; }
-        .highlight { color: var(--prompt-color); font-weight: bold; }
-        
-        .scanlines {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-            z-index: 10;
-            background-size: 100% 3px, 3px 100%;
-            pointer-events: none;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body onclick="document.getElementById('user-input').focus()">
 
     <div class="scanlines"></div>
 
     <div class="terminal">
         <div class="ascii-art">
-<pre>
+            <pre>
 #      ____            _    __       _ _       
 #     |  _ \ ___  _ __| |_ / _| ___ | (_) ___  
 #     | |_) / _ \| '__| __| |_ / _ \| | |/ _ \ 
@@ -98,7 +24,7 @@
 </pre>
         </div>
         <p>Welcome to BifrostOS v0.0.1. Type <span class="highlight">'help'</span> to see available commands.</p>
-        
+
         <div id="terminal-history"></div>
 
         <div class="input-line">
@@ -107,130 +33,7 @@
         </div>
     </div>
 
-    <script>
-        const input = document.getElementById('user-input');
-        const history = document.getElementById('terminal-history');
-
-        const urlMap = {
-            'chaos_game': "https://github.com/Thisguy217/Chaos-Game-Simulator",
-            'bug': "https://github.com/Thisguy217/is-there-a-bug",
-            'capstone': "https://github.com/Thisguy217/2025caps",
-            'github': "https://github.com/Thisguy217/thisguy217.github.io",
-            'linkedin': "https://www.linkedin.com/in/teancum-hoopes-8a4a64b2"
-        }
-
-        const commands = {
-            'help': "Available: [about] [projects] [contact] [clear] [theme default/amber] [history]",
-            'about': "I am a Bioinformatician who genuinely just genuinely enjoys learning. " + 
-                "I earned my Bachelor of Science from BYU in April 2025 with a double major in Bioinformatics and Biochemistry, and a double minor in Computer Science and Mathematics. " + 
-                "Now I study at ASU, where I am working towards a Master of Science in Computational Life Sciences. Currently, I am working on various projects while between jobs. " +
-                "However, the jobs I have worked include areas of Protein Engineering, Simulation Research, IT support/administration, and more. I am always excited about new projects and want to learn more!",
-            'projects': "1. Chaos Game Simulator [chaos_game]\n2. Is There a Bug? [bug]\n3. 2025 Capstone Project [capstone]\n4. This website! [github]",
-            'contact': "Email: mrteancumhoopes@gmail.com\nLinkedIn: Teancum Hoopes (Load me by typing 'load linkedin'!)",
-            'history': "Displaying session command history...",
-            'load': "Rerouting...",
-            'reboot': "Rebooting..."
-        };
-
-        let commandHistory = [];
-        let historyIndex = -1;
-        let currentDraft = "";
-
-        input.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                const fullInput = input.value.trim();
-                const parts = fullInput.toLowerCase().split(' ');
-                const cmd = parts[0];
-                const arg = parts[1];
-                
-                addLine(`<span class="prompt">guest@dev:~$</span> ${fullInput}`);
-
-                if (fullInput !== "") {
-                    commandHistory.push(fullInput);
-                    historyIndex = -1;
-                }
-
-                // Handle logic
-                if (cmd === 'clear') {
-                    history.innerHTML = '';
-                } else if (cmd === 'theme') {
-                    handleTheme(arg);
-                } else if (cmd === 'history') {
-                    addLine(`<div class="command-output">${commandHistory.join('\n')}</div>`);
-                } else if (cmd === 'load') {
-                    addLine(`<div class="command-output">${commands[cmd]}</div>`);
-                    handleRedirect(arg);
-                } else if (cmd === 'reboot') {
-                    addLine(`<div class="command-output">${commands[cmd]}</div>`);
-                    window.location.reload();
-                } else if (commands[cmd]) {
-                    addLine(`<div class="command-output">${commands[cmd]}</div>`);
-                } else if (fullInput !== "") {
-                    addLine(`<div class="command-output">Unknown command. Try 'help'.</div>`);
-                }
-
-                input.value = '';
-                window.scrollTo(0, document.body.scrollHeight);
-            } 
-            else if (e.key === 'ArrowUp') {
-                e.preventDefault();
-                if (commandHistory.length > 0) {
-                    if (historyIndex === -1) {
-                        currentDraft = input.value;
-                        historyIndex = commandHistory.length - 1;
-                    } else if (historyIndex > 0) {
-                        historyIndex--;
-                    }
-                    input.value = commandHistory[historyIndex];
-                }
-            } 
-            else if (e.key === 'ArrowDown') {
-                e.preventDefault();
-                if (historyIndex !== -1) {
-                    if (historyIndex < commandHistory.length - 1) {
-                        historyIndex++;
-                        input.value = commandHistory[historyIndex];
-                    } else {
-                        historyIndex = -1;
-                        input.value = currentDraft;
-                    }
-                }
-            }
-        });
-
-        function handleTheme(theme) {
-            if (theme === 'amber') {
-                document.body.className = 'theme-amber';
-                addLine("Switched to Amber Phosphor theme.");
-            } else if (theme === 'default') {
-                document.body.className = '';
-                addLine("Switched to Default Matrix theme.");
-            } else if (theme === 'ubuntu') {
-                document.body.className = 'theme-ubuntu';
-                addLine("Switched to Ubuntu theme.");
-            } else if (theme === 'matrix') {
-                document.body.className = 'theme-matrix';
-                addLine("Switched to Matrix theme.");
-            } else {
-                addLine("Usage: theme [default | amber | ubuntu | matrix]");
-            }
-        }
-
-        function handleRedirect(urlLocation) {
-            if (urlMap[urlLocation]) {
-                window.location.href = urlMap[urlLocation];
-            } else if (!urlMap[urlLocation]) {
-                addLine("Failed to reroute...")
-            } else {
-                addLine("Usage: load [project_name]");
-            }
-        }
-
-        function addLine(text) {
-            const div = document.createElement('div');
-            div.innerHTML = text;
-            history.appendChild(div);
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
+
 </html>
