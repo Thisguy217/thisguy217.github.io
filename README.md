@@ -1,8 +1,8 @@
-# 🖥️ BifrostOS — Terminal Portfolio
+# BifrostOS — Terminal Portfolio
 
 > _A retro-terminal personal website, because clicking buttons is overrated._
 
-**[🔗 Live Site → thisguy217.github.io](https://thisguy217.github.io)**
+**[Live Site → thisguy217.github.io](https://thisguy217.github.io)**
 
 ---
 
@@ -12,7 +12,7 @@ This is my personal portfolio website, disguised as a command-line interface. In
 
 Type `help` and start exploring.
 
-## ✨ Features
+## Features
 
 - **Interactive terminal UI** — navigate the entire site by typing commands
 - **Dynamic project listing** — projects are loaded from a JSON config, so adding new work is as simple as updating one file
@@ -22,7 +22,7 @@ Type `help` and start exploring.
 - **Responsive design** — works on mobile (ASCII art gracefully hides on small screens)
 - **GitHub Pages ready** — static files, zero build step, deploys instantly
 
-## 🧰 Tech Stack
+## Tech Stack
 
 | Layer     | Tech                          |
 |-----------|-------------------------------|
@@ -34,7 +34,7 @@ Type `help` and start exploring.
 
 No frameworks. No bundlers. No dependencies. Just the fundamentals.
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 .
@@ -61,7 +61,7 @@ No frameworks. No bundlers. No dependencies. Just the fundamentals.
 | `clear`                          | Clear the terminal                       |
 | `reboot`                         | Reload the page                          |
 
-## 🚀 Adding a New Project
+## Adding a New Project
 
 Hosted sub-projects are driven entirely by `projects.json`. To add one:
 
@@ -81,17 +81,17 @@ Hosted sub-projects are driven entirely by `projects.json`. To add one:
 
 External links (repos, profiles, etc.) can be added to the `urlMap` object in `script.js`.
 
-## 👤 About Me
+## About Me
 
 I'm a Bioinformatician with a BS from BYU (Bioinformatics + Biochemistry, minors in CS and Math) currently pursuing an MS in Computational Life Sciences at ASU. I've worked across protein engineering, simulation research, and IT — and I'm always chasing the next interesting problem.
 
-## 📬 Contact
+## Contact
 
 - **Email:** mrteancumhoopes@gmail.com
 - **LinkedIn:** [Teancum Hoopes](https://www.linkedin.com/in/teancum-hoopes)
 - **GitHub:** [Thisguy217](https://github.com/Thisguy217)
 
-## 📄 License
+## License
 
 This project is open source. Feel free to fork it and make it your own — just swap out my info for yours.
 
