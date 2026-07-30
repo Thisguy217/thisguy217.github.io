@@ -16,5 +16,11 @@
     "key": "deck",
     "description": "A fun, interactive version of the deck of many things!",
     "path": "/deck/"
+  },
+  {
+    "name": "Bucketize",
+    "key": "bucketize",
+    "description": "A tool I built to help my wife with planning and packing for trips!",
+    "path": "/bucketize/"
   }
 ]
