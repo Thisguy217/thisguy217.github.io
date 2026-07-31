@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Chaos Game Simulator",
+    "key": "chaos_game",
+    "description": "A visual simulator for the chaos game fractal algorithm.",
+    "url": "https://github.com/Thisguy217/Chaos-Game-Simulator"
+  },
+  {
+    "name": "Is There a Bug?",
+    "key": "bug",
+    "description": "A tool to help identify bugs in code.",
+    "url": "https://github.com/Thisguy217/is-there-a-bug"
+  },
+  {
+    "name": "2025 Capstone Project",
+    "key": "capstone",
+    "description": "Senior capstone project (2025).",
+    "url": "https://github.com/Thisguy217/2025caps"
+  }
+]

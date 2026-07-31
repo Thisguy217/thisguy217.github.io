@@ -1,12 +1,9 @@
 const input = document.getElementById('user-input');
 const history = document.getElementById('terminal-history');
 
-/* ── External links (non-hosted) ── */
-const urlMap = {
-    'chaos_game': "https://github.com/Thisguy217/Chaos-Game-Simulator",
-    'bug': "https://github.com/Thisguy217/is-there-a-bug",
-    'capstone': "https://github.com/Thisguy217/2025caps",
-    'github': "https://github.com/Thisguy217/thisguy217.github.io",
+/* ── Hard-coded social / profile links ── */
+const socialLinks = {
+    'github':   "https://github.com/Thisguy217",
     'linkedin': "https://www.linkedin.com/in/teancum-hoopes"
 };
 
@@ -18,9 +15,17 @@ fetch('projects.json')
     .then(data => { hostedProjects = data; })
     .catch(() => { console.warn('Could not load projects.json'); });
 
+/* ── GitHub repos loaded dynamically from repos.json ── */
+let githubRepos = [];
+
+fetch('repos.json')
+    .then(res => res.json())
+    .then(data => { githubRepos = data; })
+    .catch(() => { console.warn('Could not load repos.json'); });
+
 /* ── Static command responses ── */
 const commands = {
-    'help': "Available: [about] [projects] [contact] [clear] [theme default/amber/ubuntu/matrix] [history]",
+    'help': "Available: [about] [projects] [links] [contact] [clear] [theme default/amber/ubuntu/matrix] [history]",
     'about': "I am a Bioinformatician who genuinely just genuinely enjoys learning. " +
         "I earned my Bachelor of Science from BYU in April 2025 with a double major in Bioinformatics and Biochemistry, and a double minor in Computer Science and Mathematics. " +
         "Now I study at ASU, where I am working towards a Master of Science in Computational Life Sciences. Currently, I am working on various projects while between jobs. " +
@@ -58,6 +63,8 @@ input.addEventListener('keydown', (e) => {
             addLine(`<div class="command-output">${commandHistory.join('\n')}</div>`);
         } else if (cmd === 'projects') {
             handleProjects();
+        } else if (cmd === 'links') {
+            handleLinks();
         } else if (cmd === 'load') {
             addLine(`<div class="command-output">${commands[cmd]}</div>`);
             handleRedirect(arg);
@@ -100,8 +107,8 @@ input.addEventListener('keydown', (e) => {
 });
 
 /* ── Projects command ──
-   Dynamically lists hosted projects from projects.json,
-   then appends the GitHub repo link at the end. */
+   Dynamically lists hosted projects from projects.json
+   and GitHub repos from repos.json. */
 function handleProjects() {
     let lines = [];
     let counter = 1;
@@ -112,18 +119,27 @@ function handleProjects() {
         counter++;
     });
 
-    // External GitHub repos
-    lines.push(`${counter}. Chaos Game Simulator  [load chaos_game]`);
-    counter++;
-    lines.push(`${counter}. Is There a Bug?  [load bug]`);
-    counter++;
-    lines.push(`${counter}. 2025 Capstone Project  [load capstone]`);
-    counter++;
+    // GitHub repos (loaded from repos.json)
+    if (githubRepos.length > 0) {
+        lines.push('');
+        lines.push('── GitHub Repositories ──');
+        githubRepos.forEach(r => {
+            lines.push(`${counter}. ${r.name} — ${r.description}  [load ${r.key}]`);
+            counter++;
+        });
+    }
 
-    // GitHub page link at the end
-    lines.push('');
-    lines.push(`GitHub: https://github.com/Thisguy217/thisguy217.github.io  [load github]`);
+    addLine(`<div class="command-output">${lines.join('\n')}</div>`);
+}
 
+/* ── Links command ──
+   Shows hard-coded social / profile links. */
+function handleLinks() {
+    const lines = [
+        '── Social & Profile Links ──',
+        `GitHub:   ${socialLinks.github}   [load github]`,
+        `LinkedIn: ${socialLinks.linkedin}  [load linkedin]`
+    ];
     addLine(`<div class="command-output">${lines.join('\n')}</div>`);
 }
 
@@ -146,7 +162,7 @@ function handleTheme(theme) {
 }
 
 /* ── Redirect handler ──
-   Checks hosted projects first, then falls back to urlMap. */
+   Checks hosted projects first, then repos, then social links. */
 function handleRedirect(urlLocation) {
     // Check hosted projects from projects.json first
     const hosted = hostedProjects.find(p => p.key === urlLocation);
@@ -155,11 +171,18 @@ function handleRedirect(urlLocation) {
         return;
     }
 
-    // Fall back to external urlMap
-    if (urlMap[urlLocation]) {
-        window.location.href = urlMap[urlLocation];
+    // Check GitHub repos from repos.json
+    const repo = githubRepos.find(r => r.key === urlLocation);
+    if (repo) {
+        window.location.href = repo.url;
+        return;
+    }
+
+    // Fall back to hard-coded social links
+    if (socialLinks[urlLocation]) {
+        window.location.href = socialLinks[urlLocation];
     } else {
-        addLine("Failed to reroute. Try 'projects' to see available targets.");
+        addLine("Failed to reroute. Try 'projects' or 'links' to see available targets.");
     }
 }
 

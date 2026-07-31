@@ -22,5 +22,11 @@
     "key": "bucketize",
     "description": "A tool I built to help my wife with planning and packing for trips!",
     "path": "/bucketize/"
+  },
+  {
+    "name": "ClassTicket",
+    "key": "classticket",
+    "description": "For when I struggled planning my homework and getting stuff done on time!",
+    "path": "/classticket/"
   }
 ]
