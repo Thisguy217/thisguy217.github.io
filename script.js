@@ -3,7 +3,7 @@ const history = document.getElementById('terminal-history');
 
 /* ── Hard-coded social / profile links ── */
 const socialLinks = {
-    'github':   "https://github.com/Thisguy217",
+    'github': "https://github.com/Thisguy217",
     'linkedin': "https://www.linkedin.com/in/teancum-hoopes"
 };
 
@@ -114,10 +114,13 @@ function handleProjects() {
     let counter = 1;
 
     // Hosted sub-projects (loaded from projects.json)
-    hostedProjects.forEach(p => {
-        lines.push(`${counter}. ${p.name} — ${p.description}  [load ${p.key}]`);
-        counter++;
-    });
+    if (hostedProjects.length > 0) {
+        lines.push('── Hosted Projects ──');
+        hostedProjects.forEach(p => {
+            lines.push(`${counter}. ${p.name} — ${p.description}  [load ${p.key}]`);
+            counter++;
+        });
+    }
 
     // GitHub repos (loaded from repos.json)
     if (githubRepos.length > 0) {
