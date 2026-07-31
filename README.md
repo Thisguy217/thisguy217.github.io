@@ -47,7 +47,7 @@ No frameworks. No bundlers. No dependencies. Just the fundamentals.
 └── deck/               # Deck of Many Things Simulator
 ```
 
-## ⌨️ Available Commands
+## Available Commands
 
 | Command                          | Description                              |
 |----------------------------------|------------------------------------------|
@@ -83,7 +83,7 @@ External links (repos, profiles, etc.) can be added to the `urlMap` object in `s
 
 ## About Me
 
-I'm a Bioinformatician with a BS from BYU (Bioinformatics + Biochemistry, minors in CS and Math) currently pursuing an MS in Computational Life Sciences at ASU. I've worked across protein engineering, simulation research, and IT — and I'm always chasing the next interesting problem.
+I'm a Bioinformatician with a BS from BYU (Bioinformatics + Biochemistry, minors in CS and Math), currently pursuing an MS in Computational Life Sciences at ASU. I've worked across protein engineering, simulation research, and IT — and I'm always chasing the next interesting problem.
 
 ## Contact
 
@@ -94,6 +94,10 @@ I'm a Bioinformatician with a BS from BYU (Bioinformatics + Biochemistry, minors
 ## License
 
 This project is open source. Feel free to fork it and make it your own — just swap out my info for yours.
+
+### Disclaimer
+
+Before anyone comes and flips out, I have never been against working with Deep Learning and Artificial Intelligence, so this project truly has been built with a combination of many tools.
 
 ---
 
