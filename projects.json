@@ -28,5 +28,11 @@
     "key": "classticket",
     "description": "For when I struggled planning my homework and getting stuff done on time!",
     "path": "/classticket/"
+  },
+  {
+    "name": "Project Tracker",
+    "key": "project_tracker",
+    "description": "I built this for tracking my own little side projects, maybe I will give it a cool name one day.",
+    "path": "/project_tracker/"
   }
 ]
