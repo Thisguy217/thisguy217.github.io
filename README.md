@@ -83,7 +83,7 @@ External links (repos, profiles, etc.) can be added to the `urlMap` object in `s
 
 ## About Me
 
-I'm a Bioinformatician with a BS from BYU (Bioinformatics + Biochemistry, minors in CS and Math) currently pursuing an MS in Computational Life Sciences at ASU. I've worked across protein engineering, simulation research, and IT — and I'm always chasing the next interesting problem.
+I'm a Bioinformatician with a BS from BYU (Bioinformatics & Biochemistry, minors in CS and Math) currently pursuing an MS in Computational Life Sciences at ASU. I've worked across protein engineering, simulation research, and IT. But I'm always chasing the next interesting puzzle to solve!
 
 ## Contact
 
