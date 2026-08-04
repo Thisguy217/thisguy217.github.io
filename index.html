@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BifrostOS v0.1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onclick="document.getElementById('user-input').focus()">
+
+    <div class="scanlines"></div>
+
+    <div class="terminal">
+        <div class="ascii-art">
+            <pre>
+#      ____            _    __       _ _       
+#     |  _ \ ___  _ __| |_ / _| ___ | (_) ___  
+#     | |_) / _ \| '__| __| |_ / _ \| | |/ _ \ 
+#     |  __/ (_) | |  | |_|  _| (_) | | | (_) |
+#     |_|   \___/|_|   \__|_|  \___/|_|_|\___/ 
+#                                              
+</pre>
+        </div>
+        <p>Welcome to BifrostOS v0.0.1. Type <span class="highlight">'help'</span> to see available commands.</p>
+
+        <div id="terminal-history"></div>
+
+        <div class="input-line">
+            <span class="prompt">guest@dev:~$</span>
+            <input type="text" id="user-input" autofocus autocomplete="off" spellcheck="false">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "LiveQ",
+    "key": "liveq",
+    "description": "Presentation tool for asking and answering questions live!",
+    "path": "/liveq/"
+  },
+  {
+    "name": "Monster Architect",
+    "key": "monster_architect",
+    "description": "Need a monster not in the Monster Manual? Create one here!",
+    "path": "/monster_architect/"
+  },
+  {
+    "name": "The Deck of Many Things Simulator",
+    "key": "deck",
+    "description": "A fun, interactive version of the deck of many things!",
+    "path": "/deck/"
+  },
+  {
+    "name": "Bucketize",
+    "key": "bucketize",
+    "description": "A tool I built to help my wife with planning and packing for trips!",
+    "path": "/bucketize/"
+  },
+  {
+    "name": "ClassTicket",
+    "key": "classticket",
+    "description": "For when I struggled planning my homework and getting stuff done on time!",
+    "path": "/classticket/"
+  },
+  {
+    "name": "Project Tracker",
+    "key": "project_tracker",
+    "description": "I built this for tracking my own little side projects, maybe I will give it a cool name one day.",
+    "path": "/project_tracker/"
+  }
+]
